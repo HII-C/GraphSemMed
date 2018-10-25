@@ -1,5 +1,7 @@
 import MySQLdb as sql
 import MySQLdb.connections as conns
+from getpass import getpass
+from dataclasses import dataclass
 
 from neo4j import GraphDatabase
 
@@ -18,6 +20,13 @@ class DatabaseHandle:
         self.user = user
         self.host = host
         self.db = db
+
+
+@dataclass
+class PmidKnowledgeHandles:
+    pubmed: DatabaseHandle
+    semmed: DatabaseHandle
+    derived: DatabaseHandle
 
 
 class NeoHandle:
